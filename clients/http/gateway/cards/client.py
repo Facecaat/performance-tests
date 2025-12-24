@@ -1,4 +1,5 @@
 from clients.http.client import HTTPClient
+from clients.http.gateway.client import build_gateway_http_client
 from httpx import Response
 from typing import TypedDict
 
@@ -11,7 +12,7 @@ class CreateCardRequestDict(TypedDict):
     accountId: str
 
 
-class CardGatewayHTTPClient(HTTPClient):
+class CardsGatewayHTTPClient(HTTPClient):
     def issue_virtual_card_api(self, request: CreateCardRequestDict) -> Response:
         """
         Создание виртуальной карты.
@@ -29,3 +30,12 @@ class CardGatewayHTTPClient(HTTPClient):
         :return: Объект от свервера (объект httpx.Response)
         """
         return self.post("/api/v1/cards/issue-physical-card", json=request)
+
+
+def build_cards_gateway_http_client() -> CardsGatewayHTTPClient:
+    """
+    Функция создаёт экземпляр CardsGatewayHTTPClient с уже настроенным HTTP-клиентом.
+
+    :return: Готовый к использованию CardsGatewayHTTPClient.
+    """
+    return CardsGatewayHTTPClient(client=build_gateway_http_client())
