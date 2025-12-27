@@ -78,7 +78,6 @@ class UsersGatewayHTTPClient(HTTPClient):
             phoneNumber="string"
         )
         response = self.create_user_api(request)
-        print(response.text, response.status_code)
         return response.json()
 
 
