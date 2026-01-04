@@ -17,11 +17,11 @@ open_debit_card_account_response = accounts_gateway_client.open_debit_card_accou
 print('Open debit card account response:', open_debit_card_account_response)
 
 get_tariff_documents_response = documents_gateway_client.get_tariff_document(
-    account_id=open_debit_card_account_response['account']['id']
+    account_id=open_debit_card_account_response.account.id
 )
 print('Get tariff document response:', get_tariff_documents_response)
 
 get_contract_documents_response = documents_gateway_client.get_contract_document(
-    account_id=open_debit_card_account_response['account']['id']
+    account_id=open_debit_card_account_response.account.id
 )
 print('Get contract document response:', get_contract_documents_response)
