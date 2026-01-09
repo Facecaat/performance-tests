@@ -160,7 +160,7 @@ class MakePurchaseOperationRequestSchema(MakeOperationRequestSchema):
     """
     Структура данных для создания операции покупки.
     """
-    category: fake.category()
+    category: str = Field(default_factory=fake.category())
 
 
 class MakePurchaseOperationResponseSchema(MakeOperationResponseSchema):
