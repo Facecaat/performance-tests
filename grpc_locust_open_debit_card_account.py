@@ -24,7 +24,7 @@ class OpenDebitCardAccountScenarioUser(User):
     @task
     def open_debit_card_account(self):
         """
-        Основная задача виртуального пользователя — открытие дебетовых карт.
+        Основная задача виртуального пользователя — открытие дебетовой карт.
         Метод будет многократно вызываться Locust-агентами.
         """
         self.accounts_gateway_client.open_debit_card_account(self.create_user_response.user.id)
