@@ -1,14 +1,14 @@
 from locust import User, between, task
 
 from clients.grpc.gateway.users.client import UsersGatewayGRPCClient, build_users_gateway_locust_grpc_client
-from clients.grpc.gateway.accounts.client import build_accounts_gateway_locust_grpc_client
+from clients.grpc.gateway.accounts.client import AccountsGatewayGRPCClient, build_accounts_gateway_locust_grpc_client
 from contracts.services.gateway.users.rpc_create_user_pb2 import CreateUserResponse
 
 
 class OpenDebitCardAccountScenarioUser(User):
     host = "localhost"
     wait_time = between(1, 3)
-
+    accounts_gateway_client: AccountsGatewayGRPCClient
     users_gateway_client: UsersGatewayGRPCClient
     create_user_response: CreateUserResponse
 
